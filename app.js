@@ -18,20 +18,15 @@ const app = express();
 
 // Middleware
 app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "http://localhost:3000",
-      "https://merabestie-orpin.vercel.app",
-      "https://merabestie-khaki.vercel.app",
-      "https://sahibafrontend.vercel.app/",
-      "https://merabestie.com",
-      "https://hosteecommerce.vercel.app",
-    ], // Frontend URLs
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
-  })
+  cors()
+  // origin: [
+  //   "http://localhost:5173",
+  //   "http://localhost:3000",
+  //   "https://sahibafrontend.vercel.app/",
+  // ], // Frontend URLs
+  // credentials: true,
+  // methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  // allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
 );
 
 app.use(express.json());
@@ -146,7 +141,6 @@ app.post("/create-product", async (req, res) => {
 // Get All Products Route
 app.get("/get-product", async (req, res) => {
   try {
-
     const products = await Product.find({});
     res.status(200).json({
       success: true,
