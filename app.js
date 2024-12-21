@@ -20,10 +20,11 @@ const app = express();
 app.use(
   cors({
     origin: [
-      " http://localhost:5173",
+      "http://localhost:5173",
       "http://localhost:3000",
       "https://merabestie-orpin.vercel.app",
       "https://merabestie-khaki.vercel.app",
+      "https://sahibafrontend.vercel.app/",
       "https://merabestie.com",
       "https://hosteecommerce.vercel.app",
     ], // Frontend URLs
