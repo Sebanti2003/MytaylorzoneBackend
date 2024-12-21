@@ -17,16 +17,25 @@ const Product = require("./models/product");
 const app = express();
 
 // Middleware
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "https://sahibafrontend.vercel.app/",
+  "http://localhost:5173",
+];
 app.use(
-  cors()
-  // origin: [
-  //   "http://localhost:5173",
-  //   "http://localhost:3000",
-  //   "https://sahibafrontend.vercel.app/",
-  // ], // Frontend URLs
-  // credentials: true,
-  // methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  // allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (origin && allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
+  })
 );
 
 app.use(express.json());
