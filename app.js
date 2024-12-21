@@ -20,7 +20,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:3001",
-  "https://sahibafrontend.vercel.app/",
+  "https://sahibafrontend.vercel.app",
   "http://localhost:5173",
 ];
 app.use(
