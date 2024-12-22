@@ -441,6 +441,28 @@ app.get("/get-user", async (req, res) => {
     });
   }
 });
+app.get("/get-user/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const user = await mongoose.model("User").findOne({ userId });
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+    res.status(200).json({
+      success: true,
+      user,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Error fetching user details",
+      error: error.message,
+    });
+  }
+});
 
 // Update Account Status Route
 app.put("/update-account-status", async (req, res) => {
