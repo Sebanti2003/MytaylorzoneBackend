@@ -68,7 +68,7 @@ app.use("/complaints", complaintsRoutes);
 app.use("/coupon", couponRoutes);
 
 // MongoDB Connection
-const uri = "mongodb+srv://ecommerce:ecommerce@ecommerce.dunf0.mongodb.net/";
+const uri = "mongodb+srv://seb:1234567891011@cluster0.fyaxc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
